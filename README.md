@@ -10,7 +10,7 @@
 ## Installation & Run
 ```bash
 # Download this project
-$ github.com/rohanshukla/go-gin-gorm-boilerplate
+$ go get github.com/rohanshukla/go-gin-gorm-boilerplate
 
 # Download Gin Framework
 $ go get -u github.com/gin-gonic/gin
@@ -27,7 +27,7 @@ $ go run main.go   or   make dev
 
 ## Project Structure
 ```
-1. Models   ->  Database Table Schema, and Connection in db.go
+1. Models   ->  Database Table Schema, and Connection setup in db.go
 2. Routers  ->  API end point controllers
 3. Utils    ->  Local Storage file and Send Response over HTTP Generic Function
 4. main.go  ->  Gin Server Setup and Routes Managements
