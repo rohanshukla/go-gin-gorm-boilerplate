@@ -9,8 +9,8 @@
 
 ## Installation & Run
 ```bash
-# Download this project
-$ go get github.com/rohanshukla/go-gin-gorm-boilerplate
+# Clone this project
+$ git clone https://github.com/rohanshukla/go-gin-gorm-boilerplate.git
 
 # Download Gin Framework
 $ go get -u github.com/gin-gonic/gin
