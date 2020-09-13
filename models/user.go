@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"webapp/utils"
 )
 
@@ -38,7 +37,6 @@ func GetUser(id int) map[string]interface{} {
 
 func GetAllUser(fields []string) map[string]interface{} {
 	users := make([]*User, 0)
-	fmt.Printf("%v, %T\n", fields, fields)
 	result := GetDBInstance().Select(fields).Find(&users)
 	if result.Error != nil {
 		return utils.SendResponse(false, map[string]interface{}{

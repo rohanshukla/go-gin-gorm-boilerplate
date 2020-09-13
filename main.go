@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"webapp/routers"
@@ -11,6 +12,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func middleware(c *gin.Context) {
+	// Go Log Request
+	// Authenticate Tokens and much more
+	fmt.Println("I am Middleware")
+}
+
 func main() {
 
 	envLoadError := godotenv.Load()
@@ -19,16 +26,17 @@ func main() {
 	}
 
 	// go run . --> To Run all files
-	routes := gin.Default()
+	r := gin.Default()
+	r.Use(middleware)
 
-	routes.GET("/", func(c *gin.Context) {
+	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"hello": "Rohan",
 			"store": utils.DBStore,
 		})
 	})
 
-	v1Routes := routes.Group("/v1")
+	v1Routes := r.Group("/v1")
 	{
 		// User Routes
 		userRoutes := v1Routes.Group("/user")
@@ -58,7 +66,7 @@ func main() {
 	}
 
 	port := os.Getenv("PORT")
-	if err := routes.Run(":" + port); err != nil {
+	if err := r.Run(":" + port); err != nil {
 		log.Fatal(err.Error())
 	}
 }
